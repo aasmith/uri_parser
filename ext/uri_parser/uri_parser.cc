@@ -48,7 +48,7 @@ VALUE component_rb_str(std::string& url, const url_parse::Component& comp)
 
 VALUE uri_parser_valid(VALUE self)
 { 
-	return rb_iv_get(self, "@"ATTR_VALID);
+	return rb_iv_get(self, "@" ATTR_VALID);
 }
 
 VALUE uri_parser_initialize(VALUE self, VALUE in)
@@ -59,13 +59,13 @@ VALUE uri_parser_initialize(VALUE self, VALUE in)
 	
 	bool valid = canonicalize_url(url, &canonical, &parsed);
 
-	rb_iv_set(self, "@"ATTR_PORT, component_rb_str(canonical, parsed.port));
-	rb_iv_set(self, "@"ATTR_HOST, component_rb_str(canonical, parsed.host));
-	rb_iv_set(self, "@"ATTR_PATH, component_rb_str(canonical, parsed.path));
-	rb_iv_set(self, "@"ATTR_QUERY, component_rb_str(canonical, parsed.query));
-	rb_iv_set(self, "@"ATTR_SCHEME, component_rb_str(canonical, parsed.scheme));
-	rb_iv_set(self, "@"ATTR_URI, rb_str_new2(canonical.c_str()));
-	rb_iv_set(self, "@"ATTR_VALID, valid ? Qtrue : Qfalse);
+	rb_iv_set(self, "@" ATTR_PORT, component_rb_str(canonical, parsed.port));
+	rb_iv_set(self, "@" ATTR_HOST, component_rb_str(canonical, parsed.host));
+	rb_iv_set(self, "@" ATTR_PATH, component_rb_str(canonical, parsed.path));
+	rb_iv_set(self, "@" ATTR_QUERY, component_rb_str(canonical, parsed.query));
+	rb_iv_set(self, "@" ATTR_SCHEME, component_rb_str(canonical, parsed.scheme));
+	rb_iv_set(self, "@" ATTR_URI, rb_str_new2(canonical.c_str()));
+	rb_iv_set(self, "@" ATTR_VALID, valid ? Qtrue : Qfalse);
 	
 	return Qtrue;
 }
